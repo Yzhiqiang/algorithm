@@ -14,7 +14,7 @@ public class Main {
     static int n, k;
     static int N = 100010;
     static int[] p = new int[N];   //同类
-    static int[] e = new int[N];   //捕食
+    static int[] d = new int[N];   //捕食
     static int cnt = 0;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static void main(String[] args) throws IOException {
@@ -28,27 +28,34 @@ public class Main {
             String[] s1 = br.readLine().split(" ");
             int a = Integer.parseInt(s1[1]);
             int b = Integer.parseInt(s1[2]);
-            if(s1[0].equals("1")) {
-                if(a > n || b > n) {
-                    cnt++;
+            if(a > n || b > n)  cnt++;
+            else {
+                int px = find(a), py = find(b);
+                if (s1[0].equals("1")) {
+                    if(px == py && (d[a] - d[b]) % 3 != 0) cnt++;
+                    else if(px != py){
+                        p[px] = py;
+                        d[px] = d[b] - d[a];
+                    }
                 }
                 else {
-                    p[find(a)] = find(b);
-                }
-            } else {
-                if(a == b) {
-                    cnt++;
-                } else {
-                    e[a] = b;
+                   if(px == py && (d[a] - d[b] - 1) %3 != 0) cnt++;
+                   else if(px != py) {
+                       p[px] = py;
+                       d[px] = d[b] + 1 - d[a];
+                   }
                 }
             }
+            k--;
         }
+        System.out.println(cnt);
     }
     public static int find(int x) {
-        if(p[x] != x) p[x] = find(p[x]);
+        if(p[x] != x) {
+            int t = find(p[x]);
+            d[x] += d[p[x]];
+            p[x] = t;
+        }
         return p[x];
-    }
-    public static int eat(int x) {
-
     }
 }
