@@ -73,6 +73,7 @@ public class HeapSort {
     static int N = 100010;
     static int[] p = new int[N];
     static int n, m;
+    static int size;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
@@ -80,7 +81,7 @@ public class HeapSort {
         for (int i = 1; i <= n; i++) {
             p[i] = in.nextInt();
         }
-        int size = n;
+        size = n;
         for(int i = size / 2; i > 0 ; i--) {
             down(i);
         }
@@ -94,10 +95,10 @@ public class HeapSort {
     }
     public static void down(int k) {
         int t = k;
-        if(2 * k <= n && p[2 * k] < p[t]) {
+        if(2 * k <= size && p[2 * k] < p[t]) {
             t = 2 * k;
         }
-        if(2 * k + 1 <= n && p[2 * k + 1] < p[t]) {
+        if(2 * k + 1 <= size && p[2 * k + 1] < p[t]) {
             t = 2 * k + 1;
         }
         if(t != k) {
