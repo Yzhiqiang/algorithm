@@ -10,15 +10,17 @@ import java.util.Map;
  * @Modified By:
  */
 public class test {
+    private String password;
     public static void main(String[] args) {
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(10, 1);
-        map.put(5, 0);
-        map.put(15, 2);
-        map.put(30,6);
-        map.put(1, 9);
-        for(Map.Entry<Integer, Integer> entry:map.entrySet()) {
-            System.out.println(entry.getKey() + "  " + entry.getValue());
-        }
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getPassword() {
+        return this.password;
+
+
+
+
     }
 }
