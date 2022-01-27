@@ -9,6 +9,5 @@ public class Main {
         String str = "123121";
         str.length();
         char[][] ch = new char[10][10];
-        ch[0][0] = str[0];
     }
 }
