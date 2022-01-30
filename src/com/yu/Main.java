@@ -3,17 +3,22 @@ import java.io.*;
 import java.util.*;
 class Main {
     public static void main(String[] args) {
-        Map<String, String> hashMap = new HashMap<>();
-        hashMap.put("key1", "value1");
-        hashMap.put("key2", "value2");
-        hashMap.put("key3", "value3");
-        hashMap.put("key4", "value4");
-        hashMap.put("key5", "value5");
-
-        List<Map.Entry<String, String>> set = hashMap.entrySet();
-        for (Map.Entry<String, String> stringStringEntry : set) {
-
-        }
+        List<Person> list = new ArrayList<>();
+        Person p1 = new Person(1);
+        Person p2 = new Person(4);
+        Person p3 = new Person(2);
+        Person p4 = new Person(9);
+        list.add(p1);
+        list.add(p2);
+        list.add(p3);
+        list.add(p4);
+        Collections.sort(list, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.age - o2.age;
+            }
+        });
+        System.out.println(list.get(0));
     }
 }
 class Person implements Comparator<Person> {
